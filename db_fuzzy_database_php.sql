@@ -1,20 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Jan 2016 pada 09.37
--- Versi Server: 5.6.21
--- PHP Version: 5.6.3
+-- Waktu pembuatan: 29 Jul 2023 pada 07.36
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_fuzzy_database_php`
@@ -26,10 +27,10 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `alternatif`
 --
 
-CREATE TABLE IF NOT EXISTS `alternatif` (
+CREATE TABLE `alternatif` (
   `id_alternatif` varchar(50) NOT NULL,
   `nama_alternatif` varchar(200) DEFAULT NULL,
-  `deskripsi` text
+  `deskripsi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -37,52 +38,24 @@ CREATE TABLE IF NOT EXISTS `alternatif` (
 --
 
 INSERT INTO `alternatif` (`id_alternatif`, `nama_alternatif`, `deskripsi`) VALUES
+('BTKDA', 'Wisata Batukuda', '-'),
 ('CWLNI', 'Ciwalini', '-'),
 ('GNPTR', 'Gunung Putri', '-'),
+('KBBDG', 'Kebun Binatang Bandung', '-'),
 ('KPBBO', 'Kampung Bamboo', '-'),
 ('KWPTH', 'Kawah Putih', '-'),
-('KBBDG', 'Kebun Binatang Bandung', '-'),
 ('PCKBT', 'Puncak Bintang', '-'),
 ('RCUPS', 'Ranca Upas', '-'),
-('SHYHT', 'Sanghyang Heuleut', '-'),
 ('SAUJO', 'Saung Angklung Udjo', '-'),
-('STUCS', 'Situ Cisanti', '-'),
-('STPTG', 'Situ Patenggang', '-'),
-('STGRD', 'Stone Garden', '-'),
 ('SGCKH', 'Sungai Cikahuripan', '-'),
+('SHYHT', 'Sanghyang Heuleut', '-'),
+('STGRD', 'Stone Garden', '-'),
+('STPTG', 'Situ Patenggang', '-'),
+('STUCS', 'Situ Cisanti', '-'),
+('TBKRT', 'Tebing Keraton', '-'),
 ('THRID', 'Taman Hutan Raya Ir Djuanda', '-'),
 ('TKPRH', 'Tangkuban Perahu', '-'),
-('TBKRT', 'Tebing Keraton', '-'),
-('TSBDG', 'Trans Studio Mall Bandung', '-'),
-('BTKDA', 'Wisata Batukuda', '-');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kriteria_fuzzy`
---
-
-CREATE TABLE IF NOT EXISTS `kriteria_fuzzy` (
-  `id_kriteria_fuzzy` varchar(50) NOT NULL,
-  `nama_kriteria_fuzzy` varchar(200) DEFAULT NULL,
-  `batas_bawah` double DEFAULT NULL,
-  `batas_tengah` double DEFAULT NULL,
-  `batas_atas` double DEFAULT NULL,
-  `nama_bawah` varchar(200) DEFAULT NULL,
-  `nama_tengah` varchar(200) DEFAULT NULL,
-  `nama_atas` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `kriteria_fuzzy`
---
-
-INSERT INTO `kriteria_fuzzy` (`id_kriteria_fuzzy`, `nama_kriteria_fuzzy`, `batas_bawah`, `batas_tengah`, `batas_atas`, `nama_bawah`, `nama_tengah`, `nama_atas`) VALUES
-('JRK', 'Jarak', 13, 26, 38, 'Dekat', 'Sedang', 'Jauh'),
-('HRG', 'Harga', 15000, 30000, 50000, 'Murah', 'Sedang', 'Mahal'),
-('FSL', 'Fasilitas', 50, 70, 85, 'Kurang', 'Cukup', 'Lengkap'),
-('SPT', 'Spot Foto', 50, 70, 85, 'Kurang', 'Cukup', 'Keren'),
-('PKR', 'Parkiran', 50, 70, 85, 'Sempit', 'Sedang', 'Luas');
+('TSBDG', 'Trans Studio Mall Bandung', '-');
 
 -- --------------------------------------------------------
 
@@ -90,7 +63,7 @@ INSERT INTO `kriteria_fuzzy` (`id_kriteria_fuzzy`, `nama_kriteria_fuzzy`, `batas
 -- Struktur dari tabel `login`
 --
 
-CREATE TABLE IF NOT EXISTS `login` (
+CREATE TABLE `login` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -105,24 +78,52 @@ INSERT INTO `login` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai_fuzzy`
+-- Struktur dari tabel `tb_kriteria`
 --
 
-CREATE TABLE IF NOT EXISTS `nilai_fuzzy` (
-`id_nilai_fuzzy` int(11) NOT NULL,
+CREATE TABLE `tb_kriteria` (
+  `id_kriteria` varchar(50) NOT NULL,
+  `nama_kriteria` varchar(200) DEFAULT NULL,
+  `batas_bawah` double DEFAULT NULL,
+  `batas_tengah` double DEFAULT NULL,
+  `batas_atas` double DEFAULT NULL,
+  `nama_bawah` varchar(200) DEFAULT NULL,
+  `nama_tengah` varchar(200) DEFAULT NULL,
+  `nama_atas` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_kriteria`
+--
+
+INSERT INTO `tb_kriteria` (`id_kriteria`, `nama_kriteria`, `batas_bawah`, `batas_tengah`, `batas_atas`, `nama_bawah`, `nama_tengah`, `nama_atas`) VALUES
+('FSL', 'Fasilitas', 50, 70, 85, 'Kurang', 'Cukup', 'Lengkap'),
+('HRG', 'Harga', 15000, 30000, 50000, 'Murah', 'Sedang', 'Mahal'),
+('JRK', 'Jarak', 13, 26, 38, 'Dekat', 'Sedang', 'Jauh'),
+('PKR', 'Parkiran', 50, 70, 85, 'Sempit', 'Sedang', 'Luas'),
+('SPT', 'Spot Foto', 50, 70, 85, 'Kurang', 'Cukup', 'Keren');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_nilai`
+--
+
+CREATE TABLE `tb_nilai` (
+  `id_nilai` int(11) NOT NULL,
   `id_alternatif` varchar(50) DEFAULT NULL,
-  `id_kriteria_fuzzy` varchar(50) DEFAULT NULL,
+  `id_kriteria` varchar(50) DEFAULT NULL,
   `nilai` double DEFAULT NULL,
   `bawah` double DEFAULT NULL,
   `tengah` double DEFAULT NULL,
   `atas` double DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nilai_fuzzy`
+-- Dumping data untuk tabel `tb_nilai`
 --
 
-INSERT INTO `nilai_fuzzy` (`id_nilai_fuzzy`, `id_alternatif`, `id_kriteria_fuzzy`, `nilai`, `bawah`, `tengah`, `atas`) VALUES
+INSERT INTO `tb_nilai` (`id_nilai`, `id_alternatif`, `id_kriteria`, `nilai`, `bawah`, `tengah`, `atas`) VALUES
 (1, 'CWLNI', 'JRK', 42, 0, 0, 1),
 (2, 'CWLNI', 'HRG', 25000, 0.3333, 0.6667, 0),
 (3, 'CWLNI', 'FSL', 84, 0, 0.0667, 0.93333),
@@ -214,45 +215,58 @@ INSERT INTO `nilai_fuzzy` (`id_nilai_fuzzy`, `id_alternatif`, `id_kriteria_fuzzy
 (89, 'BTKDA', 'SPT', 80, 0, 0.3333, 0.6667),
 (90, 'BTKDA', 'PKR', 68, 0.1, 0.9, 0);
 
--- --------------------------------------------------------
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `alternatif`
+-- Indeks untuk tabel `alternatif`
 --
 ALTER TABLE `alternatif`
- ADD PRIMARY KEY (`id_alternatif`);
+  ADD PRIMARY KEY (`id_alternatif`);
 
 --
--- Indexes for table `kriteria_fuzzy`
---
-ALTER TABLE `kriteria_fuzzy`
- ADD PRIMARY KEY (`id_kriteria_fuzzy`);
-
---
--- Indexes for table `login`
+-- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
- ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `nilai_fuzzy`
+-- Indeks untuk tabel `tb_kriteria`
 --
-ALTER TABLE `nilai_fuzzy`
- ADD PRIMARY KEY (`id_nilai_fuzzy`);
+ALTER TABLE `tb_kriteria`
+  ADD PRIMARY KEY (`id_kriteria`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indeks untuk tabel `tb_nilai`
+--
+ALTER TABLE `tb_nilai`
+  ADD PRIMARY KEY (`id_nilai`),
+  ADD KEY `nilai_fuzzy_ibfk_1` (`id_alternatif`),
+  ADD KEY `id_kriteria_fuzzy` (`id_kriteria`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `nilai_fuzzy`
+-- AUTO_INCREMENT untuk tabel `tb_nilai`
 --
-ALTER TABLE `nilai_fuzzy`
-MODIFY `id_nilai_fuzzy` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
+ALTER TABLE `tb_nilai`
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `tb_nilai`
+--
+ALTER TABLE `tb_nilai`
+  ADD CONSTRAINT `tb_nilai_ibfk_1` FOREIGN KEY (`id_alternatif`) REFERENCES `alternatif` (`id_alternatif`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_nilai_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `tb_kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
