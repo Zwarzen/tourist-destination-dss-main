@@ -47,7 +47,7 @@ include("koneksi.php");
         </ul>
         <ul class="navbar-nav ms-auto">
           <!-- <li class="nav-item">
-            <a href="fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
+            <a href="index.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
               Cari Wisata
             </a>
           </li> -->
@@ -285,23 +285,26 @@ include("koneksi.php");
 			<form class="row g-3 mt-1" id="kategori" name="form1" method="post" action="">
 				<?php
 				//membuat query
-				$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy ASC");
+				$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria ASC");
 				//apabila data yang dimaksud ada dalam tabel maka data ditampilkan
 				while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
 				?>
 					<div class="col-md-4">
 						<label for="inputState" class="form-label">
 							<strong>
-								<?php echo ucwords($datakriteriafuzzy['nama_kriteria_fuzzy']); ?>
+								<?php echo ucwords($datakriteriafuzzy['nama_kriteria']); ?>
 							</strong>
 						</label>
 						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteriafuzzy['id_kriteria_fuzzy']; ?>" id="kriteria<?php echo $datakriteriafuzzy['id_kriteria_fuzzy']; ?>" class="inputan">
-							<option value="bawah">Rating<? //php echo $datakriteriafuzzy['nama_bawah']; ?></option>
+							<option value="bawah">Bawah<?php echo $datakriteriafuzzy['nama_bawah']; ?></option>
+							<option value="tengah">Tengah<?php echo $datakriteriafuzzy['nama_tengah']; ?></option>
+							<option value="atas">Atas<?php echo $datakriteriafuzzy['nama_atas']; ?></option>
+							<!-- <option value="bawah">Rating<? //php echo $datakriteriafuzzy['nama_bawah']; ?></option>
 							<option value="tengah">Jarak<? //php echo $datakriteriafuzzy['nama_tengah']; ?></option>
 							<option value="atas">Kuliner<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-              <option value="atas">Fasilitas<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-              <option value="atas">Harga<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-              <option value="atas">Spot Foto<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
+							<option value="atas">Fasilitas<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
+							<option value="atas">Harga<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
+							<option value="atas">Spot Foto<? //php echo $datakriteriafuzzy['nama_atas']; ?></option> -->
 						</select>
 					</div>
 				<?php
