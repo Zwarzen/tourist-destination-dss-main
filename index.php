@@ -175,100 +175,8 @@ include("koneksi.php");
     </div>
   </section>
 
-  <!-- VIDEO -->
-  <!-- <section>
-      
-
-      <div class="container">
-      <div class="video_row">
-      <div class="video_item">
-          <h5>Rating</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Rating <br>  -->
-              <!-- <label class="text-muted"><small><small>Memperoleh Nilai 84</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-        <div class="video_item">
-          <h5>Fasilitas</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Lengkap <br>  -->
-              <!-- <label class="text-muted"><small><small>Memperoleh Nilai 84</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-        <div class="video_item">
-          <h5>Spot Foto</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Keren <br>  -->
-              <!-- <label class="text-muted"><small><small>Memperoleh Nilai 82</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-        <div class="video_item">
-          <h5>Lahan Parkir</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Luas <br>  -->
-              <!-- <label class="text-muted"><small><small>Memperoleh Nilai 80</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-        <div class="video_item">
-          <h5>Harga</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Mahal <br>  -->
-              <!-- <label class="text-muted"><small><small>Rp. 45.000</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-        <div class="video_item">
-          <h5>Jarak dari Kota</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Kategori Jarak <br>  -->
-              <!-- <label class="text-muted"><small><small>45 KM</small></small></label> -->
-            <!-- </label>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- PARAMETERS -->
-  <!-- <center>
-    <div class="container" id="parameter">
-      <div class="parameter_img">
-        <div>
-          
-          <h4>Parameter Yang Digunakan</h4>
-        </div>
-        <div class="parameter_text">
-          <h5 class="parameter1"><i class="uil uil-map-pin-alt"> </i> Rating</h5>
-          <h5 class="parameter1"><i class="uil uil-map-pin-alt"> </i> Jarak</h5>
-          <h5 class="parameter2"><i class="uil uil-bill"> </i> Harga</h5>
-          <h5 class="parameter4"><i class="uil uil-star"> </i> Fasilitas</h5>
-          <h5 class="parameter5"><i class="uil uil-sign-alt"> </i> Kuliner</h5>
-          <h5 class="parameter3"><i class="uil uil-camera-plus"> </i> Spot Foto</h5>
-        </div>
-      </div>
-    </div>
-  </center> -->
-
-
   <!-- QUESTION CHOOSE -->
-	<?php
+  <?php
 	if (!isset($_POST['button'])) {
 	?>
 		<div class="container mb-5">
@@ -278,33 +186,27 @@ include("koneksi.php");
 				<!-- <a href="#kategori" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
 					Kategori
 				</a> -->
-				<!-- <a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
+				<a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
 					Kembali
-				</a> -->
+				</a>
 			</center>
 			<form class="row g-3 mt-1" id="kategori" name="form1" method="post" action="">
 				<?php
 				//membuat query
-				$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria ASC");
+				$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria ASC");
 				//apabila data yang dimaksud ada dalam tabel maka data ditampilkan
-				while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
+				while ($datakriteria = mysqli_fetch_array($querykriteria)) {
 				?>
 					<div class="col-md-4">
 						<label for="inputState" class="form-label">
 							<strong>
-								<?php echo ucwords($datakriteriafuzzy['nama_kriteria']); ?>
+								<?php echo ucwords($datakriteria['nama_kriteria']); ?>
 							</strong>
 						</label>
-						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteriafuzzy['id_kriteria_fuzzy']; ?>" id="kriteria<?php echo $datakriteriafuzzy['id_kriteria_fuzzy']; ?>" class="inputan">
-							<option value="bawah">Bawah<?php echo $datakriteriafuzzy['nama_bawah']; ?></option>
-							<option value="tengah">Tengah<?php echo $datakriteriafuzzy['nama_tengah']; ?></option>
-							<option value="atas">Atas<?php echo $datakriteriafuzzy['nama_atas']; ?></option>
-							<!-- <option value="bawah">Rating<? //php echo $datakriteriafuzzy['nama_bawah']; ?></option>
-							<option value="tengah">Jarak<? //php echo $datakriteriafuzzy['nama_tengah']; ?></option>
-							<option value="atas">Kuliner<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-							<option value="atas">Fasilitas<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-							<option value="atas">Harga<? //php echo $datakriteriafuzzy['nama_atas']; ?></option>
-							<option value="atas">Spot Foto<? //php echo $datakriteriafuzzy['nama_atas']; ?></option> -->
+						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria_']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
+							<option value="bawah">Bawah<? //php echo $datakriteria['nama_bawah']; ?></option>
+							<option value="tengah">Tengah<? //php echo $datakriteria['nama_tengah']; ?></option>
+							<option value="atas">Atas<? //php echo $datakriteria['nama_atas']; ?></option>
 						</select>
 					</div>
 				<?php
@@ -323,14 +225,13 @@ include("koneksi.php");
 				<center>
 					<img src="assets/otw.png" width="350px" alt="">
 				
-				<h3 class="mx-lg-5 text-center my-4">Hasil Filter : 
-          <!-- <br> Semoga Memuaskan ya, Happy Holiday Guys!</h3> -->
-				<!-- <a href="fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
+				<h3 class="mx-lg-5 text-center my-4">Gimana Hasilnya? <br> Semoga Memuaskan ya, Happy Holiday Guys!</h3>
+				<a href="db-fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
 					Kategori
 				</a>
 				<a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
 					Kembali
-				</a> -->
+				</a>
 				</center>
 				<label class="mt-5">Semua Hasil : </label>
 				<div class="table-responsive table-striped mt-3 mb-5">
@@ -339,12 +240,12 @@ include("koneksi.php");
 							<th>No</th>
 							<th>Nama Wisata</th>
 							<?php
-							$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
-							while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
+							$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
+							while ($datakriteria = mysqli_fetch_array($querykriteria)) {
 							?>
-								<th>Bawah<?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_bawah']; ?></th>
-								<th>Tengah<?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_tengah']; ?></th>
-								<th>Atas<?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_atas']; ?></th>
+								<th>Bawah<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_bawah']; ?></th>
+								<th>Tengah<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_tengah']; ?></th>
+								<th>Atas<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_atas']; ?></th>
 							<?php
 							}
 							?>
@@ -359,14 +260,14 @@ include("koneksi.php");
 								<td><?php echo $i; ?></td>
 								<td><?php echo $dataalternatif['nama_alternatif']; ?></td>
 								<?php
-								$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
-								while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
-									$querynilaifuzzy = mysqli_query($db, "SELECT * FROM nilai_fuzzy WHERE id_alternatif = '$dataalternatif[id_alternatif]' AND id_kriteria_fuzzy = '$datakriteriafuzzy[id_kriteria_fuzzy]'");
-									$datanilaifuzzy = mysqli_fetch_array($querynilaifuzzy);
+								$querykriteria = mysqli_query($db, "SELECT * FROM id_kriteria ORDER BY id_kriteria");
+								while ($datakriteria = mysqli_fetch_array($querykriteria)) {
+									$querynilai = mysqli_query($db, "SELECT * FROM tb_nilai WHERE id_alternatif = '$dataalternatif[id_alternatif]' AND id_kriteria = '$datakriteria[id_kriteria]'");
+									$datanilai = mysqli_fetch_array($querynilai);
 								?>
-									<td><?php echo $datanilaifuzzy['bawah']; ?></td>
-									<td><?php echo $datanilaifuzzy['tengah']; ?></td>
-									<td><?php echo $datanilaifuzzy['atas']; ?></td>
+									<td><?php echo $datanilai['bawah']; ?></td>
+									<td><?php echo $datanilai['tengah']; ?></td>
+									<td><?php echo $datanilai['atas']; ?></td>
 								<?php
 								}
 								?>
@@ -385,19 +286,19 @@ include("koneksi.php");
 							<th>No</th>
 							<th>Nama Wisata</th>
 							<?php
-							$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
-							while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
-								if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'bawah') {
+							$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
+							while ($datakriteria = mysqli_fetch_array($querykriteria)) {
+								if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'bawah') {
 							?>
-									<th><?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_bawah']; ?></th>
+									<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_bawah']; ?></th>
 								<?php
-								} else if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'tengah') {
+								} else if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'tengah') {
 								?>
-									<th><?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_tengah']; ?></th>
+									<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_tengah']; ?></th>
 								<?php
-								} else if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'atas') {
+								} else if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'atas') {
 								?>
-									<th><?php echo $datakriteriafuzzy['nama_kriteria_fuzzy']; ?> <?php echo $datakriteriafuzzy['nama_atas']; ?></th>
+									<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_atas']; ?></th>
 								<?php
 								}
 								?>
@@ -425,46 +326,46 @@ include("koneksi.php");
 									<td><?php echo ($i + 1); ?></td>
 									<td><?php echo $dataalternatif['nama_alternatif']; ?></td>
 									<?php
-									$querykriteriafuzzy = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
+									$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
 									$j = 0;
-									while ($datakriteriafuzzy = mysqli_fetch_array($querykriteriafuzzy)) {
-										$querynilaifuzzy = mysqli_query($db, "SELECT * FROM nilai_fuzzy WHERE id_alternatif = '$dataalternatif[id_alternatif]' AND id_kriteria_fuzzy = '$datakriteriafuzzy[id_kriteria_fuzzy]'");
-										$datanilaifuzzy = mysqli_fetch_array($querynilaifuzzy);
-										if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'bawah') {
+									while ($datakriteria = mysqli_fetch_array($querykriteria)) {
+										$querynilai = mysqli_query($db, "SELECT * FROM tb_nilai WHERE id_alternatif = '$dataalternatif[id_alternatif]' AND id_kriteria = '$datakriteria[id_kriteria]'");
+										$datanilai = mysqli_fetch_array($querynilai);
+										if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'bawah') {
 									?>
 											<td>
 												<?php
 												if ($j == 0) {
-													$fire_strength[$i] = $datanilaifuzzy['bawah'];
-												} else if ($fire_strength[$i] > $datanilaifuzzy['bawah']) {
-													$fire_strength[$i] = $datanilaifuzzy['bawah'];
+													$fire_strength[$i] = $datanilai['bawah'];
+												} else if ($fire_strength[$i] > $datanilai['bawah']) {
+													$fire_strength[$i] = $datanilai['bawah'];
 												}
-												echo $datanilaifuzzy['bawah'];
+												echo $datanilai['bawah'];
 												?>
 											</td>
 										<?php
-										} else if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'tengah') {
+										} else if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'tengah') {
 										?>
 											<td>
 												<?php
 												if ($j == 0) {
-													$fire_strength[$i] = $datanilaifuzzy['tengah'];
-												} else if ($fire_strength[$i] > $datanilaifuzzy['tengah']) {
-													$fire_strength[$i] = $datanilaifuzzy['tengah'];
+													$fire_strength[$i] = $datanilai['tengah'];
+												} else if ($fire_strength[$i] > $datanilai['tengah']) {
+													$fire_strength[$i] = $datanilai['tengah'];
 												}
-												echo $datanilaifuzzy['tengah'];
+												echo $datanilai['tengah'];
 												?>
 											</td>
 										<?php
-										} else if ($_POST['kriteria' . $datakriteriafuzzy['id_kriteria_fuzzy']] == 'atas') {
+										} else if ($_POST['kriteria' . $datakriteria['id_kriteria']] == 'atas') {
 										?>
 											<td><?php
 												if ($j == 0) {
-													$fire_strength[$i] = $datanilaifuzzy['atas'];
-												} else if ($fire_strength[$i] > $datanilaifuzzy['atas']) {
-													$fire_strength[$i] = $datanilaifuzzy['atas'];
+													$fire_strength[$i] = $datanilai['atas'];
+												} else if ($fire_strength[$i] > $datanilai['atas']) {
+													$fire_strength[$i] = $datanilai['atas'];
 												}
-												echo $datanilaifuzzy['atas'];
+												echo $datanilai['atas'];
 												?>
 											</td>
 									<?php
