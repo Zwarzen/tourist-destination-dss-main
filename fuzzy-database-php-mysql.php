@@ -1,7 +1,7 @@
 <?php
 include("koneksi.php");
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -14,7 +14,7 @@ include("koneksi.php");
 	<!-- UNICONS -->
 	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
-	<title>BanyuwangiGo App</title>
+	<title>HirwiGo App</title>
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="assets/style_item.css">
 	<link rel="stylesheet" href="style_db.css">
@@ -77,10 +77,10 @@ include("koneksi.php");
 								<?php echo ucwords($datakriteria['nama_kriteria']); ?>
 							</strong>
 						</label>
-						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria_']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
-							<option value="bawah">Bawah<? //php echo $datakriteria['nama_bawah']; ?></option>
-							<option value="tengah">Tengah<? //php echo $datakriteria['nama_tengah']; ?></option>
-							<option value="atas">Atas<? //php echo $datakriteria['nama_atas']; ?></option>
+						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
+							<option value="bawah"><?php echo $datakriteria['nama_bawah']; ?></option>
+							<option value="tengah"><?php echo $datakriteria['nama_tengah']; ?></option>
+							<option value="atas"><?php echo $datakriteria['nama_atas']; ?></option>
 						</select>
 					</div>
 				<?php
@@ -100,7 +100,7 @@ include("koneksi.php");
 					<img src="assets/otw.png" width="350px" alt="">
 				
 				<h3 class="mx-lg-5 text-center my-4">Gimana Hasilnya? <br> Semoga Memuaskan ya, Happy Holiday Guys!</h3>
-				<a href="db-fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
+				<a href="fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
 					Kategori
 				</a>
 				<a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
@@ -117,9 +117,9 @@ include("koneksi.php");
 							$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
 							while ($datakriteria = mysqli_fetch_array($querykriteria)) {
 							?>
-								<th>Bawah<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_bawah']; ?></th>
-								<th>Tengah<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_tengah']; ?></th>
-								<th>Atas<?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_atas']; ?></th>
+								<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_bawah']; ?></th>
+								<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_tengah']; ?></th>
+								<th><?php echo $datakriteria['nama_kriteria']; ?> <?php echo $datakriteria['nama_atas']; ?></th>
 							<?php
 							}
 							?>
@@ -134,7 +134,7 @@ include("koneksi.php");
 								<td><?php echo $i; ?></td>
 								<td><?php echo $dataalternatif['nama_alternatif']; ?></td>
 								<?php
-								$querykriteria = mysqli_query($db, "SELECT * FROM id_kriteria ORDER BY id_kriteria");
+								$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
 								while ($datakriteria = mysqli_fetch_array($querykriteria)) {
 									$querynilai = mysqli_query($db, "SELECT * FROM tb_nilai WHERE id_alternatif = '$dataalternatif[id_alternatif]' AND id_kriteria = '$datakriteria[id_kriteria]'");
 									$datanilai = mysqli_fetch_array($querynilai);
@@ -259,7 +259,8 @@ include("koneksi.php");
 			</div>
 		</div>
 		<div class="container">
-		<input type="button" class="btn btn-primary rounded-3 mt-2" value="Lihat Hasil Detail" onclick="document.getElementById('perhitungan').style.display='block';">
+			<input type="button" class="btn btn-primary rounded-3 mt-2" value="Lihat Hasil Detail" onclick="document.getElementById('perhitungan').style.display='block';" />
+			<h4 class="mt-5 mb-3">Hasil Analisa Destinasi Wisata Menggunakan SPK Metode AHP Database</h4>
 			<?php
 			for ($i = 0; $i < count($id_alternatif); $i++) {
 				for ($j = $i; $j < count($id_alternatif); $j++) {
