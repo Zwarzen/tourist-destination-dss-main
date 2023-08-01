@@ -203,7 +203,7 @@ include("koneksi.php");
 								<?php echo ucwords($datakriteria['nama_kriteria']); ?>
 							</strong>
 						</label>
-						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria_']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
+						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
 							<option value="bawah">Bawah<?php echo $datakriteria['nama_bawah']; ?></option>
 							<option value="tengah">Tengah<?php echo $datakriteria['nama_tengah']; ?></option>
 							<option value="atas">Atas<?php echo $datakriteria['nama_atas']; ?></option>
