@@ -183,12 +183,10 @@ include("koneksi.php");
 			<center>
 				<img src="assets/jalann.png" width="350px" alt="">
 				<h3 class="mx-lg-5 text-center my-4">Yuk, Cari Destinasi <br> Berdasarkan Kriteria Yang Kamu Inginkan</h3>
-				<a href="#kategori" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
-					Kategori
-				</a>
-				<a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
+				
+				<!-- <a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
 					Kembali
-				</a>
+				</a> -->
 			</center>
 			<form class="row g-3 mt-1" id="kategori" name="form1" method="post" action="">
 				<?php
@@ -226,9 +224,9 @@ include("koneksi.php");
 					<img src="assets/otw.png" width="350px" alt="">
 				
 				<h3 class="mx-lg-5 text-center my-4">Gimana Hasilnya? <br> Semoga Memuaskan ya, Happy Holiday Guys!</h3>
-				<a href="fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
+				<!-- <a href="fuzzy-database-php-mysql.php" class="btn text-decoration-none rounded-pill btn-primary mx-lg-2">
 					Kategori
-				</a>
+				</a> -->
 				<a href="index.php" class="btn text-decoration-none rounded-pill btn-outline-primary">
 					Kembali
 				</a>
