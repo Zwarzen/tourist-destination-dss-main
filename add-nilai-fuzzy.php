@@ -9,9 +9,9 @@
 	if (isset($_POST['button']))
 	{
 
-		$id_kriteria_fuzzy=$_POST['id_kriteria_fuzzy'];
+		$id_kriteria=$_POST['id_kriteria'];
 		
-		$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy WHERE id_kriteria_fuzzy = '$_POST[id_kriteria_fuzzy]'");
+		$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria WHERE id_kriteria = '$_POST[id_kriteria]'");
 		$datakriteria = mysqli_fetch_array($querykriteria);
 					
 		$nilai=$_POST['nilai'];
@@ -44,7 +44,7 @@
 			$atas=($nilai - $bt_tengah)/($bt_atas - $bt_tengah);
 		}
 		
-		mysqli_query($db, "INSERT INTO nilai_fuzzy(id_alternatif, id_kriteria_fuzzy, nilai, bawah, tengah, atas) VALUES('$_POST[id_alternatif]', '$_POST[id_kriteria_fuzzy]', '$_POST[nilai]', '$bawah', '$tengah', '$atas')");
+		mysqli_query($db, "INSERT INTO tb_nilai(id_alternatif, id_kriteria, nilai, bawah, tengah, atas) VALUES('$_POST[id_alternatif]', '$_POST[id_kriteria]', '$_POST[nilai]', '$bawah', '$tengah', '$atas')");
 		header("location:nilai-fuzzy.php");
 	}
 ?>
@@ -116,14 +116,14 @@ a:active {
           </tr>
           <tr>
             <td width="128" bgcolor="#FFFFFF">Kriteria AHP</td>
-            <td width="249" bgcolor="#FFFFFF"><select name="id_kriteria_fuzzy" id="id_kriteria_fuzzy">
+            <td width="249" bgcolor="#FFFFFF"><select name="id_kriteria" id="id_kriteria">
                 <option value=""></option>
                 <?php
-					$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
+					$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
 					while ($datakriteria = mysqli_fetch_array($querykriteria))
 					{
 				?>
-                <option value="<?php echo $datakriteria['id_kriteria_fuzzy']; ?>"><?php echo $datakriteria['nama_kriteria_fuzzy']; ?></option>
+                <option value="<?php echo $datakriteria['id_kriteria']; ?>"><?php echo $datakriteria['nama_kriteria']; ?></option>
                 <?php
 					}
 				?>

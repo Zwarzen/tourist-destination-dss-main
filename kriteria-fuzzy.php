@@ -73,15 +73,15 @@ a:active {
 			{
 		?>
         <tr>
-          <td bgcolor="#FFFFFF"><?php echo $datakriteria['id_kriteria_fuzzy']; ?></td>
-          <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_kriteria_fuzzy']; ?></td>
+          <td bgcolor="#FFFFFF"><?php echo $datakriteria['id_kriteria']; ?></td>
+          <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_kriteria']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['batas_bawah']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['batas_tengah']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['batas_atas']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_bawah']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_tengah']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_atas']; ?></td>
-          <td bgcolor="#FFFFFF"><a href="edit-kriteria-fuzzy.php?id_kriteria_fuzzy=<?php echo $datakriteria['id_kriteria_fuzzy']; ?>">Edit</a> <a href="del-kriteria-fuzzy.php?id_kriteria_fuzzy=<?php echo $datakriteria['id_kriteria_fuzzy']; ?>">Del</a></td>
+          <td bgcolor="#FFFFFF"><a href="edit-kriteria-fuzzy.php?id_kriteria=<?php echo $datakriteria['id_kriteria']; ?>">Edit</a> <a href="del-kriteria-fuzzy.php?id_kriteria=<?php echo $datakriteria['id_kriteria']; ?>">Del</a></td>
         </tr>
         <?php
 			}

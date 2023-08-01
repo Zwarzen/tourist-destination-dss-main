@@ -204,9 +204,9 @@ include("koneksi.php");
 							</strong>
 						</label>
 						<select id="inputState" class="form-select" name="kriteria<?php echo $datakriteria['id_kriteria_']; ?>" id="kriteria<?php echo $datakriteria['id_kriteria']; ?>" class="inputan">
-							<option value="bawah">Bawah<? //php echo $datakriteria['nama_bawah']; ?></option>
-							<option value="tengah">Tengah<? //php echo $datakriteria['nama_tengah']; ?></option>
-							<option value="atas">Atas<? //php echo $datakriteria['nama_atas']; ?></option>
+							<option value="bawah">Bawah<?php echo $datakriteria['nama_bawah']; ?></option>
+							<option value="tengah">Tengah<?php echo $datakriteria['nama_tengah']; ?></option>
+							<option value="atas">Atas<?php echo $datakriteria['nama_atas']; ?></option>
 						</select>
 					</div>
 				<?php
@@ -386,6 +386,7 @@ include("koneksi.php");
 		</div>
 		<div class="container">
 		<input type="button" class="btn btn-primary rounded-3 mt-2" value="Lihat Hasil Detail" onclick="document.getElementById('perhitungan').style.display='block';">
+			
 			<?php
 			for ($i = 0; $i < count($id_alternatif); $i++) {
 				for ($j = $i; $j < count($id_alternatif); $j++) {
@@ -403,6 +404,7 @@ include("koneksi.php");
 				}
 			}
 			?>
+			
 			<table class="table table-hover" border="0">
 				<tr class="table-dark">
 					<td>Ranking</td>

@@ -72,18 +72,18 @@ a:active {
 			{
 				$queryalternatif = mysqli_query($db, "SELECT * FROM alternatif WHERE id_alternatif = '$datanilai[id_alternatif]'");
 				$dataalternatif = mysqli_fetch_array($queryalternatif);
-				$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy WHERE id_kriteria_fuzzy = '$datanilai[id_kriteria_fuzzy]'");
+				$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria WHERE id_kriteria = '$datanilai[id_kriteria]'");
 				$datakriteria = mysqli_fetch_array($querykriteria);
 		?>
         <tr>
-          <td bgcolor="#FFFFFF"><?php echo $datanilai['id_nilai_fuzzy']; ?></td>
+          <td bgcolor="#FFFFFF"><?php echo $datanilai['id_nilai']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $dataalternatif['nama_alternatif']; ?></td>
-          <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_kriteria_fuzzy']; ?></td>
+          <td bgcolor="#FFFFFF"><?php echo $datakriteria['nama_kriteria']; ?></td>
           <td bgcolor="#FFFFFF"><?php echo $datanilai['nilai']; ?></td>
 		  <td bgcolor="#FFFFFF"><?php echo $datanilai['bawah']; ?></td>
 		  <td bgcolor="#FFFFFF"><?php echo $datanilai['tengah']; ?></td>
 		  <td bgcolor="#FFFFFF"><?php echo $datanilai['atas']; ?></td>
-          <td bgcolor="#FFFFFF"><a href="edit-nilai-fuzzy.php?id_nilai_fuzzy=<?php echo $datanilai['id_nilai_fuzzy']; ?>">Edit</a> <a href="del-nilai-fuzzy.php?id_nilai_fuzzy=<?php echo $datanilai['id_nilai_fuzzy']; ?>">Del</a></td>
+          <td bgcolor="#FFFFFF"><a href="edit-nilai-fuzzy.php?id_nilai=<?php echo $datanilai['id_nilai']; ?>">Edit</a> <a href="del-nilai-fuzzy.php?id_nilai=<?php echo $datanilai['id_nilai']; ?>">Del</a></td>
         </tr>
         <?php
 			}

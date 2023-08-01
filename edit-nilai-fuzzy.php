@@ -8,7 +8,7 @@
 	}
 	if (isset($_POST['button']))
 	{
-		$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy WHERE id_kriteria_fuzzy = '$_POST[id_kriteria_fuzzy]'");
+		$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria WHERE id_kriteria = '$_POST[id_kriteria]'");
 		$datakriteria = mysqli_fetch_array($querykriteria);
 					
 		$nilai=$_POST['nilai'];
@@ -41,7 +41,7 @@
 			$atas=($nilai - $bt_tengah)/($bt_atas - $bt_tengah);
 		}
 		
-		mysqli_query($db, "UPDATE nilai_fuzzy SET id_alternatif='$_POST[id_alternatif]', id_kriteria_fuzzy='$_POST[id_kriteria_fuzzy]', nilai='$_POST[nilai]', bawah='$bawah', tengah='$tengah', atas='$atas' WHERE id_nilai_fuzzy = '$_POST[id_nilai_fuzzy]'");
+		mysqli_query($db, "UPDATE tb_nilai SET id_alternatif='$_POST[id_alternatif]', id_kriteria='$_POST[id_kriteria]', nilai='$_POST[nilai]', bawah='$bawah', tengah='$tengah', atas='$atas' WHERE id_nilai = '$_POST[id_nilai]'");
 		header("location:nilai-fuzzy.php");
 	}
 ?>
@@ -49,7 +49,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SPK Destinasi Wisata Metode Fuzzy Database</title>
+<title>SPK Destinasi Wisata Metode AHP Database</title>
 <style type="text/css">
 <!--
 body,td,th {
@@ -84,24 +84,24 @@ a:active {
 <body>
 <table width="1000" border="0" align="center" cellpadding="7" cellspacing="1" bgcolor="#000099">
   <tr>
-    <td height="50" bgcolor="#FFFFFF" align="center"><span class="style1">SPK Destinasi Wisata Metode Fuzzy Database</span></td>
+    <td height="50" bgcolor="#FFFFFF" align="center"><span class="style1">SPK Destinasi Wisata Metode AHP Database</span></td>
   </tr>
   <tr>
-    <td height="35" bgcolor="#FFFFFF"><span class="style2"><a href="admin.php">Home</a> | <a href="alternatif.php">Alternatif</a> | <a href="kriteria-fuzzy.php">Kriteria Fuzzy</a> | <a href="nilai-fuzzy.php">Nilai Fuzzy</a> | <a href="logout.php">Logout</a></span></td>
+    <td height="35" bgcolor="#FFFFFF"><span class="style2"><a href="admin.php">Home</a> | <a href="alternatif.php">Alternatif</a> | <a href="kriteria-fuzzy.php">Kriteria AHP</a> | <a href="nilai-fuzzy.php">Nilai AHP</a> | <a href="logout.php">Logout</a></span></td>
   </tr>
   <tr>
     <td align="center" valign="top" bgcolor="#FFFFFF"><br />
-      <strong>Edit Data Nilai Fuzzy</strong><br />
+      <strong>Edit Data Nilai AHP</strong><br />
       <br />
       <?php
-			$querynilai = mysqli_query($db, "SELECT * FROM nilai_fuzzy WHERE id_nilai_fuzzy = '$_GET[id_nilai_fuzzy]'");
+			$querynilai = mysqli_query($db, "SELECT * FROM tb_nilai WHERE id_nilai = '$_GET[id_nilai]'");
 			$datanilai = mysqli_fetch_array($querynilai);
 		?>
       <form id="form1" name="form1" method="post" action="">
         <table width="400" border="0" cellpadding="5" cellspacing="1" bgcolor="#000099">
           <tr>
-            <td bgcolor="#FFFFFF">ID Nilai Fuzzy</td>
-            <td bgcolor="#FFFFFF"><input type="text" name="id_nilai_fuzzy" id="id_nilai_fuzzy" readonly value="<?php echo $datanilai['id_nilai_fuzzy']; ?>" /></td>
+            <td bgcolor="#FFFFFF">ID Nilai AHP</td>
+            <td bgcolor="#FFFFFF"><input type="text" name="id_nilai" id="id_nilai" readonly value="<?php echo $datanilai['id_nilai']; ?>" /></td>
           </tr>
           <tr>
             <td width="141" bgcolor="#FFFFFF"> Alternatif</td>
@@ -119,15 +119,15 @@ a:active {
             </select></td>
           </tr>
           <tr>
-            <td bgcolor="#FFFFFF">Kriteria Fuzzy</td>
-            <td width="249" bgcolor="#FFFFFF"><select name="id_kriteria_fuzzy" id="id_kriteria_fuzzy">
+            <td bgcolor="#FFFFFF">Kriteria AHP</td>
+            <td width="249" bgcolor="#FFFFFF"><select name="id_kriteria" id="id_kriteria">
                 <option value=""></option>
                 <?php
-					$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy ORDER BY id_kriteria_fuzzy");
+					$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria ORDER BY id_kriteria");
 					while ($datakriteria = mysqli_fetch_array($querykriteria))
 					{
 				?>
-                <option value="<?php echo $datakriteria['id_kriteria_fuzzy']; ?>" <?php if ($datanilai['id_kriteria_fuzzy'] == $datakriteria['id_kriteria_fuzzy']) { echo " selected"; } ?>><?php echo $datakriteria['nama_kriteria_fuzzy']; ?></option>
+                <option value="<?php echo $datakriteria['id_kriteria']; ?>" <?php if ($datanilai['id_kriteria'] == $datakriteria['id_kriteria']) { echo " selected"; } ?>><?php echo $datakriteria['nama_kriteria']; ?></option>
                 <?php
 					}
 				?>

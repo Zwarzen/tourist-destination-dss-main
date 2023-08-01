@@ -8,7 +8,7 @@
 	}
 	if (isset($_POST['button']))
 	{
-		mysqli_query($db, "UPDATE kriteria_fuzzy SET nama_kriteria_fuzzy='$_POST[nama_kriteria_fuzzy]', batas_bawah='$_POST[batas_bawah]', batas_tengah='$_POST[batas_tengah]', batas_atas='$_POST[batas_atas]', nama_bawah='$_POST[nama_bawah]', nama_tengah='$_POST[nama_tengah]', nama_atas='$_POST[nama_atas]' WHERE id_kriteria_fuzzy='$_POST[id_kriteria_fuzzy]'");
+		mysqli_query($db, "UPDATE tb_kriteria SET nama_kriteria='$_POST[nama_kriteria]', batas_bawah='$_POST[batas_bawah]', batas_tengah='$_POST[batas_tengah]', batas_atas='$_POST[batas_atas]', nama_bawah='$_POST[nama_bawah]', nama_tengah='$_POST[nama_tengah]', nama_atas='$_POST[nama_atas]' WHERE id_kriteria='$_POST[id_kriteria]'");
 		header("location:kriteria-fuzzy.php");
 	}
 ?>
@@ -16,7 +16,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SPK Destinasi Wisata Metode Fuzzy Database</title>
+<title>SPK Destinasi Wisata Metode AHP Database</title>
 <style type="text/css">
 <!--
 body,td,th {
@@ -51,28 +51,28 @@ a:active {
 <body>
 <table width="1000" border="0" align="center" cellpadding="7" cellspacing="1" bgcolor="#000099">
   <tr>
-    <td height="50" bgcolor="#FFFFFF" align="center"><span class="style1">SPK Destinasi Wisata Metode Fuzzy Database</span></td>
+    <td height="50" bgcolor="#FFFFFF" align="center"><span class="style1">SPK Destinasi Wisata Metode AHP Database</span></td>
   </tr>
   <tr>
-    <td height="35" bgcolor="#FFFFFF"><span class="style2"><a href="admin.php">Home</a> | <a href="alternatif.php">Alternatif</a> | <a href="kriteria-fuzzy.php">Kriteria Fuzzy</a> | <a href="nilai-fuzzy.php">Nilai Fuzzy</a> | <a href="logout.php">Logout</a></span></td>
+    <td height="35" bgcolor="#FFFFFF"><span class="style2"><a href="admin.php">Home</a> | <a href="alternatif.php">Alternatif</a> | <a href="kriteria-fuzzy.php">Kriteria AHP</a> | <a href="nilai-fuzzy.php">Nilai AHP</a> | <a href="logout.php">Logout</a></span></td>
   </tr>
   <tr>
     <td align="center" valign="top" bgcolor="#FFFFFF"><br />
-      <strong>Edit Data Kriteria Fuzzy</strong><br />
+      <strong>Edit Data Kriteria AHP</strong><br />
       <br />
       <?php
-			$querykriteria = mysqli_query($db, "SELECT * FROM kriteria_fuzzy WHERE id_kriteria_fuzzy = '$_GET[id_kriteria_fuzzy]'");
+			$querykriteria = mysqli_query($db, "SELECT * FROM id_kriteria WHERE id_kriteria = '$_GET[id_kriteria]'");
 			$datakriteria = mysqli_fetch_array($querykriteria);
 		?>
       <form id="form1" name="form1" method="post" action="">
         <table width="350" border="0" cellpadding="5" cellspacing="1" bgcolor="#000099">
           <tr>
-            <td bgcolor="#FFFFFF">ID Kriteria Fuzzy</td>
-            <td bgcolor="#FFFFFF"><input type="text" name="id_kriteria_fuzzy" id="id_kriteria_fuzzy" readonly value="<?php echo $datakriteria['id_kriteria_fuzzy']; ?>" /></td>
+            <td bgcolor="#FFFFFF">ID Kriteria AHP</td>
+            <td bgcolor="#FFFFFF"><input type="text" name="id_kriteria" id="id_kriteria" readonly value="<?php echo $datakriteria['id_kriteria']; ?>" /></td>
           </tr>
           <tr>
-            <td width="128" bgcolor="#FFFFFF">Nama Kriteria Fuzzy</td>
-            <td width="249" bgcolor="#FFFFFF"><input type="text" name="nama_kriteria_fuzzy" id="nama_kriteria_fuzzy" value="<?php echo $datakriteria['nama_kriteria_fuzzy']; ?>" /></td>
+            <td width="128" bgcolor="#FFFFFF">Nama Kriteria AHP</td>
+            <td width="249" bgcolor="#FFFFFF"><input type="text" name="nama_kriteria" id="nama_kriteria" value="<?php echo $datakriteria['nama_kriteria']; ?>" /></td>
           </tr>
           <tr>
             <td bgcolor="#FFFFFF">Batas Bawah</td>

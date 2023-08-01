@@ -6,6 +6,6 @@
 		header("location:login.php?pesan=Belum Login");
 		exit;
 	}
-	mysqli_query($db, "DELETE FROM kriteria_fuzzy WHERE id_kriteria_fuzzy = '$_GET[id_kriteria_fuzzy]'");
+	mysqli_query($db, "DELETE FROM tb_kriteria WHERE id_kriteria = '$_GET[id_kriteria]'");
 	header("location:kriteria-fuzzy.php");
 ?>

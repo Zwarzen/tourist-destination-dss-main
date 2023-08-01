@@ -6,6 +6,6 @@
 		header("location:login.php?pesan=Belum Login");
 		exit;
 	}
-	mysqli_query($db, "DELETE FROM nilai_fuzzy WHERE id_nilai_fuzzy = '$_GET[id_nilai_fuzzy]'");
+	mysqli_query($db, "DELETE FROM tb_nilai WHERE id_nilai = '$_GET[id_nilai]'");
 	header("location:nilai-fuzzy.php");
 ?>
