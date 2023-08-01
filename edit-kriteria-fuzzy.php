@@ -61,7 +61,7 @@ a:active {
       <strong>Edit Data Kriteria AHP</strong><br />
       <br />
       <?php
-			$querykriteria = mysqli_query($db, "SELECT * FROM id_kriteria WHERE id_kriteria = '$_GET[id_kriteria]'");
+			$querykriteria = mysqli_query($db, "SELECT * FROM tb_kriteria WHERE id_kriteria = '$_GET[id_kriteria]'");
 			$datakriteria = mysqli_fetch_array($querykriteria);
 		?>
       <form id="form1" name="form1" method="post" action="">
