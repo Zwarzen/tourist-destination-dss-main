@@ -64,11 +64,11 @@ a:active {
         <table width="450" border="0" cellpadding="5" cellspacing="1" bgcolor="#000099">
           <tr>
             <td width="159" bgcolor="#FFFFFF">ID Alternatif Wisata</td>
-            <td width="218" bgcolor="#FFFFFF"><input type="text" name="id_alternatif" id="id_alternatif" /></td>
+            <td width="218" bgcolor="#FFFFFF"><input type="text" name="id_alternatif" id="id_alternatif" required/></td>
           </tr>
           <tr>
             <td width="159" bgcolor="#FFFFFF">Nama Alternatif Wisata</td>
-            <td width="218" bgcolor="#FFFFFF"><input type="text" name="nama_alternatif" id="nama_alternatif" /></td>
+            <td width="218" bgcolor="#FFFFFF"><input type="text" name="nama_alternatif" id="nama_alternatif" required/></td>
           </tr>
           <tr>
             <td bgcolor="#FFFFFF">Deskripsi</td>

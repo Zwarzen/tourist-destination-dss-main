@@ -15,7 +15,7 @@ include("koneksi.php");
   <!-- UNICONS -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
-  <title>HirwiGo App</title>
+  <title>BanyuwangiGo!</title>
   <link rel="icon" href="https://www.pinclipart.com/picdir/big/7-75302_clip-art-transparent-library-world-png-jokingart-com.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/style_item.css">
